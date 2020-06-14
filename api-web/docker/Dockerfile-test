@@ -1,0 +1,22 @@
+FROM registry.novogenialab.com/notasquare-zero/images/nas-urad-api:0.1
+
+ADD docker/nginx-test/web /etc/nginx/sites-enabled/web
+
+#update OS
+RUN apt-get update
+
+#install mysql
+RUN apt-get install -y mysql-server
+
+RUN pip install boto
+
+RUN pip install boto3
+
+#mkdir /opt/bin/mysql_backup, /opt/bin/mysql_load
+RUN mkdir /opt/bin
+
+RUN mkdir /opt/bin/mysql_backup
+RUN mkdir /opt/bin/mysql_load
+
+ENV APP_ENV test
+ADD src/www /opt/www

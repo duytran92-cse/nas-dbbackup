@@ -1,0 +1,4 @@
+# Genopedia Sequence Viewer
+127.0.0.1         sequence-viewer-api.genopedia.local
+127.0.0.1         sequence-viewer-admin.genopedia.local
+127.0.0.1         sequence-viewer-front.genopedia.local

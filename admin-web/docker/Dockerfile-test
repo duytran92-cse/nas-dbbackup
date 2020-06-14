@@ -1,0 +1,20 @@
+FROM registry.novogenialab.com/notasquare-zero/images/nas-urad-admin:0.1
+
+# Python lib
+RUN pip install PyJWT
+
+#install boto, boto3
+RUN pip install boto
+RUN pip install boto3
+
+#update OS
+RUN apt-get update
+
+#install mysql
+RUN apt-get install -y mysql-server
+
+ENV APP_ENV test
+ADD src/www /opt/www
+
+#hack link static
+ADD src/www/notasquare/urad_web_material/static/material /opt/web/static/material
